@@ -78,6 +78,12 @@ variable "passive_monitoring_enabled" {
   default     = true
 }
 
+variable "ssl_enabled" {
+  description = "Enables SSL - Necessary when CA certificates are used."
+  type        = bool
+  default     = false
+}
+
 variable "ca_certificate_name" {
   description = "The alias of the certificate from the VCD library."
   type        = string

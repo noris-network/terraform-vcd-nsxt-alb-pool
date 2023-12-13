@@ -8,13 +8,13 @@ Terraform module which manages NSX-T ALB pool ressources for consumption by NSX-
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.9 |
-| <a name="requirement_vcd"></a> [vcd](#requirement\_vcd) | >= 3.9.0 |
+| <a name="requirement_vcd"></a> [vcd](#requirement\_vcd) | >= 3.11.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vcd"></a> [vcd](#provider\_vcd) | 3.9.0 |
+| <a name="provider_vcd"></a> [vcd](#provider\_vcd) | 3.11.0 |
 
 ## Modules
 
@@ -51,6 +51,7 @@ No modules.
 | <a name="input_passive_monitoring_enabled"></a> [passive\_monitoring\_enabled](#input\_passive\_monitoring\_enabled) | defines if client traffic should be used to check if pool member is up or down. | `bool` | `true` | no |
 | <a name="input_persistence_profile"></a> [persistence\_profile](#input\_persistence\_profile) | Persistence profile to ensure that the same user sticks to the same server for a desired duration of time | <pre>list(object({<br>    type  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | <a name="input_pool_name"></a> [pool\_name](#input\_pool\_name) | A name for NSX-T ALB Pool. | `string` | `null` | no |
+| <a name="input_ssl_enabled"></a> [ssl\_enabled](#input\_ssl\_enabled) | Enables SSL - Necessary when CA certificates are used. | `bool` | `false` | no |
 | <a name="input_use_member_group"></a> [use\_member\_group](#input\_use\_member\_group) | Whether to use an IP set as pool members. | `bool` | `false` | no |
 
 ## Outputs
@@ -84,6 +85,7 @@ module "webserver_lb_pool" {
   pool_name                = "webserver_alb_pool"
   default_port             = 443
   use_member_group         = true
+  ssl_enabled              = true
   member_group_ip_set_name = "webserver_ip_set"
   health_monitor           = ["HTTP"]
 }

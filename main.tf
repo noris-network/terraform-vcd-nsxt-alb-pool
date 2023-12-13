@@ -30,6 +30,7 @@ resource "vcd_nsxt_alb_pool" "nsxt_alb_pool" {
   default_port               = var.default_port
   graceful_timeout_period    = var.graceful_timeout_period
   passive_monitoring_enabled = var.passive_monitoring_enabled
+  ssl_enabled                = var.ssl_enabled
   ca_certificate_ids         = var.ca_certificate_name != "" ? [data.vcd_library_certificate.library_certificate["ca_cert"].id] : []
   cn_check_enabled           = var.cn_check_enabled
   domain_names               = var.domain_names
