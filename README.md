@@ -78,7 +78,7 @@ No modules.
 
 ```
 module "webserver_lb_pool" {
-  source                   = "git::https://github.com/noris-network/terraform-vcd-nsxt-alb-pool?ref=1.0.0"
+  source                   = "git::https://github.com/noris-network/terraform-vcd-nsxt-alb-pool?ref=1.0.1"
   vdc_group_name           = "myDCGroup"
   vdc_org_name             = "myORG"
   vdc_edgegateway_name     = "T1-myORG"
@@ -86,6 +86,7 @@ module "webserver_lb_pool" {
   default_port             = 443
   use_member_group         = true
   ssl_enabled              = true
+  ca_certificate_name      = "www.example.net"
   member_group_ip_set_name = "webserver_ip_set"
   health_monitor           = ["HTTP"]
 }
